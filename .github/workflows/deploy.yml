@@ -1,0 +1,22 @@
+name: Deploy Demo
+
+on: pull_request
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to ByteInspire Hosting
+        id: byteinspire_hosting_deployer
+        uses: ./
+        with:
+          service-id: "${{ secrets.SERVICE_ID }}"
+          token: "${{ secrets.ACCESS_TOKEN }}"
+          directory: "./demo"
+          changelog: "deploy by action"
+
+      - name: Check outputs
+        run: |
+          echo hosting_url ${{steps.byteinspire_hosting_deployer.outputs.hosting-url}}
+          echo version ${{steps.byteinspire_hosting_deployer.outputs.version}}

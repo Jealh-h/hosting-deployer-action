@@ -1,0 +1,29 @@
+name: Deploy to ByteInspire Hosting
+description: A GitHub action to deploy to ByteInspire Hosting
+branding:
+  icon: cloud
+  color: blue
+runs:
+  using: node12
+  main: dist/index.js
+inputs:
+  service-id:
+    description: The Service ID in ByteInspire
+    required: true
+  token:
+    description: The access token or oauth token in ByteInspire
+    required: true
+  file:
+    description: The location of your ziped file relative to the root of your repository
+    required: false
+  directory:
+    description: The location of your directory relative to the root of your repository
+    required: false
+  changelog:
+    description: Deployment changelog
+    required: false
+outputs:
+  version:
+    description: The version deployed this time
+  hosting-url:
+    description: The default hosting url
