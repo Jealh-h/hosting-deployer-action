@@ -34,7 +34,7 @@ jobs:
 | Parameter  | Required | Description                                                                           |
 | ---------- | -------- | ------------------------------------------------------------------------------------- |
 | service-id | Yes      | The Service ID in ByteInspire                                                         |
-| token      | Yes      | The access token or oauth token in ByteInspire, make sure the token has hosting scope |
+| token      | Yes      | The [access token or oauth token](https://qingfuwu.cn/dashboard/settings/pat) in ByteInspire, make sure the token has hosting scope |
 | directory  | No       | The location of your directory relative to the root of your repository                |
 | file       | No       | The location of your ziped file relative to the root of your repository                 |
 | changelog  | No       | Deployment changelog                                                             |
