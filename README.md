@@ -1,6 +1,6 @@
 # ByteInspire Hosting GitHub Action
 
-[![Build Status](https://github.com/byteinspire/hosting-deployer-action/actions/workflows/test.yml/badge.svg)](https://github.com/bytedance/byteinspire-js-sdk/actions)
+[![Build Status](https://github.com/byteinspire/hosting-deployer-action/actions/workflows/test.yml/badge.svg)](https://github.com/byteinspire/hosting-deployer-action/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Use this GitHub Action to deploy ByteInspire hosting.
