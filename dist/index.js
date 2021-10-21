@@ -35770,12 +35770,25 @@ const deploy = ({ serviceId, token, payload, changelog, }) => tslib_1.__awaiter(
     const url = utils_1.getEndPoint(serviceId);
     const baseHeaders = utils_1.getReqHeaders(token);
     try {
-        const { data: { version, default_hosting_url }, } = yield axios_1.default.post(url, form, {
+        // const {
+        //   data: { version, default_hosting_url },
+        // } = await axios.post(url, form, {
+        //   headers: {
+        //     ...baseHeaders,
+        //     ...form.getHeaders(),
+        //   },
+        // });
+        const res = yield axios_1.default.post(url, form, {
             headers: Object.assign(Object.assign({}, baseHeaders), form.getHeaders()),
         });
+        console.log(res);
+        // return {
+        //   version,
+        //   hostingUrl: default_hosting_url,
+        // };
         return {
-            version,
-            hostingUrl: default_hosting_url,
+            version: "v1.0.1",
+            hostingUrl: "default_hosting_url",
         };
     }
     catch (e) {

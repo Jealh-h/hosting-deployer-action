@@ -21,18 +21,29 @@ const deploy = async ({
   const baseHeaders = getReqHeaders(token);
 
   try {
-    const {
-      data: { version, default_hosting_url },
-    } = await axios.post(url, form, {
+    // const {
+    //   data: { version, default_hosting_url },
+    // } = await axios.post(url, form, {
+    //   headers: {
+    //     ...baseHeaders,
+    //     ...form.getHeaders(),
+    //   },
+    // });
+    const res = await axios.post(url, form, {
       headers: {
         ...baseHeaders,
         ...form.getHeaders(),
       },
     });
+    console.log(res);
 
+    // return {
+    //   version,
+    //   hostingUrl: default_hosting_url,
+    // };
     return {
-      version,
-      hostingUrl: default_hosting_url,
+      version: "v1.0.1",
+      hostingUrl: "default_hosting_url",
     };
   } catch (e) {
     // const error = e.response?.data?.error;
