@@ -39,7 +39,7 @@ const deploy = async ({
     if (error) {
       if (error.err_code === 10002) {
         throw new Error(
-          `${e}The token is invalid. Please make sure your token has the correct scope.`,
+          `${e}--${JSON.stringify(baseHeaders)}--${serviceId}The token is invalid. Please make sure your token has the correct scope.`,
         );
       }
 

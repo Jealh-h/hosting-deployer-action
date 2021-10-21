@@ -35783,7 +35783,7 @@ const deploy = ({ serviceId, token, payload, changelog, }) => tslib_1.__awaiter(
         const error = (_b = (_a = e.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.error;
         if (error) {
             if (error.err_code === 10002) {
-                throw new Error(`${e}The token is invalid. Please make sure your token has the correct scope.`);
+                throw new Error(`${e}--${JSON.stringify(baseHeaders)}--${serviceId}The token is invalid. Please make sure your token has the correct scope.`);
             }
             throw new Error(`Deploy request failed: ${JSON.stringify((_d = (_c = e.response) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.error)}`);
         }
