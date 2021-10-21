@@ -35764,45 +35764,29 @@ const axios_1 = tslib_1.__importDefault(__nccwpck_require__(6545));
 const form_data_1 = tslib_1.__importDefault(__nccwpck_require__(4334));
 const utils_1 = __nccwpck_require__(1314);
 const deploy = ({ serviceId, token, payload, changelog, }) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+    var _a, _b, _c, _d;
     const form = new form_data_1.default();
     form.append('file', payload);
     form.append('change_log', changelog);
     const url = utils_1.getEndPoint(serviceId);
     const baseHeaders = utils_1.getReqHeaders(token);
     try {
-        // const {
-        //   data: { version, default_hosting_url },
-        // } = await axios.post(url, form, {
-        //   headers: {
-        //     ...baseHeaders,
-        //     ...form.getHeaders(),
-        //   },
-        // });
-        const res = yield axios_1.default.post(url, form, {
+        const { data: { version, default_hosting_url }, } = yield axios_1.default.post(url, form, {
             headers: Object.assign(Object.assign({}, baseHeaders), form.getHeaders()),
         });
-        console.log(res);
-        // return {
-        //   version,
-        //   hostingUrl: default_hosting_url,
-        // };
         return {
-            version: "v1.0.1",
-            hostingUrl: "default_hosting_url",
+            version,
+            hostingUrl: default_hosting_url,
         };
     }
     catch (e) {
-        // const error = e.response?.data?.error;
-        // if (error) {
-        //   if (error.err_code === 10002) {
-        //     throw new Error(
-        //       `The token is invalid. Please make sure your token has the correct scope.`,
-        //     );
-        //   }
-        //   throw new Error(
-        //     `Deploy request failed: ${JSON.stringify(e.response?.data?.error)}`,
-        //   );
-        // }
+        const error = (_b = (_a = e.response) === null || _a === void 0 ? void 0 : _a.data) === null || _b === void 0 ? void 0 : _b.error;
+        if (error) {
+            if (error.err_code === 10002) {
+                throw new Error(`${e}The token is invalid. Please make sure your token has the correct scope.`);
+            }
+            throw new Error(`Deploy request failed: ${JSON.stringify((_d = (_c = e.response) === null || _c === void 0 ? void 0 : _c.data) === null || _d === void 0 ? void 0 : _d.error)}`);
+        }
         throw new Error(`Deploy request failed: ${e}`);
     }
 });
@@ -35919,7 +35903,7 @@ const getEndPoint = (serviceId) => {
 exports.getEndPoint = getEndPoint;
 const getReqHeaders = (token) => {
     return {
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
         'x-timestamp': Date.now(),
         'x-nonce': uuid_1.v4(),
     };

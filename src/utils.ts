@@ -15,7 +15,7 @@ export const getReqHeaders = (
   'x-nonce': string;
 } => {
   return {
-    Authorization: `Bearer ${token}`,
+    "Authorization": `Bearer ${token}`,
     'x-timestamp': Date.now(),
     'x-nonce': uuidv4(),
   };
